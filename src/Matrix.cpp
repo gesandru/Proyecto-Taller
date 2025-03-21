@@ -1,9 +1,6 @@
 #include "../include/Matrix.h"
-#include <iostream>
-#include <iomanip>
-#include <cmath>
 
-Matrix::Matrix(int fil, int col) : fil(fil), col(col)
+Matrix::Matrix(const int fil, const int col) : fil(fil), col(col)
 {
     initMatrix();
 }
@@ -60,9 +57,19 @@ Matrix::~Matrix()
  
 void Matrix::initMatrix()
 {
-    matrix = new double*[fil];
+	if(fil<=0 || col <=0){
+		cout<<"Error de matriz\n";
+		exit(EXIT_FAILURE);
+	}
+    matrix = (double**)malloc(fil*sizeof(double*)); //new double*[fil];
+	
+	if(matrix == NULL){
+		cout<<"Error al crear la matriz initMatrix\n";
+		exit(EXIT_FAILURE);
+	}
+	
     for (int i = 0; i < fil; i++)
-        matrix[i] = new double[col];
+        matrix[i] = (double**)malloc(col*sizeof(double*));//new double[col];
  
     for (int i = 0; i < fil; i++)
         for (int j = 0; j < col; j++)
@@ -78,31 +85,47 @@ Matrix& Matrix::operator=(const Matrix& matrix2)
     return *this;
 }
  
-Matrix Matrix::operator+(const Matrix& matrix2)
+Matrix& Matrix::operator+(const Matrix& matrix2)
 {
-    Matrix result(fil, col);
+	
+	if(this->fil!=matrix2.fil || this->col!=matrix2.col){
+		cout<<"Error de matriz en operador +\n";
+		exit(EXIT_FAILURE);
+	}
+	
+    Matrix *result = new Matrix(this->fil, this->col);
     
     for (int i = 0; i < fil; i++)
         for (int j = 0; j < col; j++)
             result.matrix[i][j] = matrix[i][j] + matrix2.matrix[i][j];
  
-    return result;
+    return *result;
 }
  
 Matrix Matrix::operator-(const Matrix& matrix2)
 {
-    Matrix result(fil, col);
+	if(this->fil!=matrix2.fil || this->col!=matrix2.col){
+		cout<<"Error de matriz en operador -\n";
+		exit(EXIT_FAILURE);
+	}
+	
+    Matrix *result = new Matrix(this->fil, this->col);
     
     for (int i = 0; i < fil; i++)
         for (int j = 0; j < col; j++)
             result.matrix[i][j] = matrix[i][j] - matrix2.matrix[i][j];
  
-    return result;
+    return *result;
 }
  
 Matrix Matrix::operator*(const Matrix& matrix2)
 {
-    Matrix result(fil, col);
+    	if(this->fil!=matrix2.fil || this->col!=matrix2.col){
+		cout<<"Error de matriz en operador *\n";
+		exit(EXIT_FAILURE);
+	}
+	
+    Matrix *result = new Matrix(this->fil, this->col);
  
     for (int i = 0; i < this->fil ; i++){
         for (int j = 0; j < matrix2.col; j++){
@@ -113,12 +136,17 @@ Matrix Matrix::operator*(const Matrix& matrix2)
         }
     }
  
-    return result;
+    return *result;
 }
 
 Matrix Matrix::operator*(const double& d)
 {
-    Matrix result(fil, col);
+	if(this->fil!=matrix2.fil || this->col!=matrix2.col){
+		cout<<"Error de matriz en operador * con double\n";
+		exit(EXIT_FAILURE);
+	}
+	
+    Matrix *result = new Matrix(this->fil, this->col);
  
     for (int i = 0; i < this->fil ; i++){
         for (int j = 0; j < this->col; j++){
@@ -127,14 +155,19 @@ Matrix Matrix::operator*(const double& d)
         }
     }
  
-    return result;
+    return *result;
 }
 
 //en nuestro código las matrices siempre van a ser cuadradas,
 //se hace en Legendre
 Matrix Matrix::operator/(const Matrix& matrix2)
 {
-    Matrix result(fil, col);
+	if(this->fil!=matrix2.fil || this->col!=matrix2.col){
+		cout<<"Error de matriz en operador /\n";
+		exit(EXIT_FAILURE);
+	}
+	
+    Matrix *result = new Matrix(this->fil, this->col);
 
     Matrix matrix3 = Matrix::INV(const_cast<Matrix &>(matrix2));
  
@@ -147,12 +180,17 @@ Matrix Matrix::operator/(const Matrix& matrix2)
         }
     }
 
-    return result;
+    return *result;
 }
 
 Matrix Matrix::operator/(const double& d)
 {
-    Matrix result(fil, col);
+	if(this->fil!=matrix2.fil || this->col!=matrix2.col){
+		cout<<"Error de matriz en operador /\n";
+		exit(EXIT_FAILURE);
+	}
+	
+    Matrix *result = new Matrix(this->fil, this->col);
  
     for (int i = 0; i < this->fil ; i++){
         for (int j = 0; j < this->col; j++){
@@ -161,18 +199,33 @@ Matrix Matrix::operator/(const double& d)
         }
     }
  
-    return result;
+    return *result;
 }
  
  
 double& Matrix::operator()(const int i, const int j) const
 {
+	if(fil<=0 || col <=0 || i>fil || j>col){
+		cout<<"Error de matriz operador ()\n";
+		exit(EXIT_FAILURE);
+	}
     return matrix[i-1][j-1];
 }
 
 double& Matrix::operator()(const int i) const
 {
+	//hacer la comprobacion
     return matrix[i-1][0];
+}
+
+ostream& operator << (ostream &o, Matrix&m){
+	for(int i = 0; i<m.fil; i++){
+		for(int j=0;j<m.col; j++){
+			printf("%5.20lf ", m(i,j));
+		}
+		o << "\n";
+	}
+	return o;
 }
  
 void Matrix::print()
@@ -210,7 +263,8 @@ double Matrix::norm() {
 }
 
 Matrix& Matrix::transpose(){
-    Matrix result(this->col, this->fil);
+	
+    Matrix *result = new Matrix(this->fil, this->col);
  
     
     for (int i = 0; i < this->getFil(); i++)
@@ -218,7 +272,7 @@ Matrix& Matrix::transpose(){
             result.matrix[i][j] = this->matrix[j][i];
             
         }
-    return result;
+    return *result;
 }
 
 Matrix static eye(double size)

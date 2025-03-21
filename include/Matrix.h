@@ -1,10 +1,27 @@
 #ifndef _MATRIX_
 #define _MATRIX_
 
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
 class Matrix
 {
+	private:
+    void initMatrix();
+
+ 
+    private:
+        double **matrix;
+	
     public:
-        Matrix(int fil, int col);
+	    int fil;
+        int col;
+        Matrix(const int fil, const int col);
         Matrix(int fil);
         Matrix(int fil, int col, double v[], int n);
         Matrix(int fil, double v[], int n);
@@ -13,14 +30,15 @@ class Matrix
         ~Matrix();
  
         Matrix& operator=(const Matrix& matrix2);
-        Matrix  operator+(const Matrix& matrix2);
+        Matrix&  operator+(const Matrix& matrix2);
         Matrix  operator-(const Matrix& matrix2);
         Matrix  operator*(const Matrix& matrix2);
         Matrix  operator*(const double& d);
         Matrix  operator/(const Matrix& matrix2);
         Matrix  operator/(const double& d);
-        double& operator()(const int i, const int j) const;
-        double& operator()(const int i) const;
+        double& operator()(const int i, const int j); //const;
+        double& operator()(const int i); //const;
+		friend ostream& operator << (ostream &o, Matrix&m);
  
         void print();
 
@@ -34,14 +52,7 @@ class Matrix
 
         Matrix INV(Matrix& M);
  
-    private:
-        void initMatrix();
 
- 
-    private:
-        int fil;
-        int col;
-        double **matrix;
 
     double DET(Matrix &M, int n);
     void getCfactor(Matrix& M, Matrix& t, int p, int q, int n);
