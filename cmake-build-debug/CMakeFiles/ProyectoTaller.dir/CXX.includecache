@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/georg/CLionProjects/ProyectoTaller/include/Matrix.h
+
+C:/Users/georg/CLionProjects/ProyectoTaller/include/Mjday.h
+../include/Matrix.h
+C:/Users/georg/CLionProjects/ProyectoTaller/include/Matrix.h
+cmath
+-
+
+C:/Users/georg/CLionProjects/ProyectoTaller/include/const.h
+
+C:/Users/georg/CLionProjects/ProyectoTaller/include/globals.h
+../include/Matrix.h
+C:/Users/georg/CLionProjects/ProyectoTaller/include/Matrix.h
+../include/const.h
+C:/Users/georg/CLionProjects/ProyectoTaller/include/const.h
+../include/Mjday.h
+C:/Users/georg/CLionProjects/ProyectoTaller/include/Mjday.h
+
+C:/Users/georg/CLionProjects/ProyectoTaller/src/globals.cpp
+cstdio
+-
+cstdlib
+-
+string
+-
+stdio.h
+-
+cstring
+-
+../include/globals.h
+C:/Users/georg/CLionProjects/ProyectoTaller/include/globals.h
+

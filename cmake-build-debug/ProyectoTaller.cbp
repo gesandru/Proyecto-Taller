@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ProyectoTaller"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ProyectoTaller">
+				<Option output="C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/ProyectoTaller.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 ProyectoTaller"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ProyectoTaller/fast">
+				<Option output="C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/ProyectoTaller.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 ProyectoTaller/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/georg/CLionProjects/ProyectoTaller/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/AccelHarmonic.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/AccelPointMass.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/AzElPa.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/Cheb3D.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/DEInteg.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/EKF_GEOS3.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/EccAnom.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/EqnEquinox.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/Frac.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/GHAMatrix.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/G_AccelHarmonic.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/Geodetic.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/IERS.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/LTC.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/Legendre.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/Matrix.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/MeanObliquity.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/MeasUpdate.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/Mjday.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/Mjday_TDB.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/NutAngles.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/NutMatrix.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/PoleMatrix.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/Position.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/PrecMatrix.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/R_x.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/R_y.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/R_z.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/TimeUpdate.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/angl.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/const.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/elements.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/gast.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/gibbs.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/globals.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/gmst.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/hgibbs.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/sign_.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/timediff.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/include/unit.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/main.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/AccelHarmonic.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/AccelPointMass.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/AzElPa.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/Cheb3D.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/DEInteg.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/EKF_GEOS3.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/EccAnom.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/EqnEquinox.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/Frac.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/GHAMatrix.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/G_AccelHarmonic.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/Geodetic.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/IERS.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/LTC.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/Legendre.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/Matrix.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/MeanObliquity.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/MeasUpdate.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/Mjday.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/Mjday_TDB.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/NutAngles.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/NutMatrix.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/PoleMatrix.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/Position.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/PrecMatrix.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/R_x.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/R_y.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/R_z.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/TimeUpdate.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/angl.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/elements.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/gast.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/gibbs.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/globals.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/gmst.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/hgibbs.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/main.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/sign_.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/timediff.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/src/unit.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/test.cpp">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/test.h">
+			<Option target="ProyectoTaller"/>
+		</Unit>
+		<Unit filename="C:/Users/georg/CLionProjects/ProyectoTaller/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

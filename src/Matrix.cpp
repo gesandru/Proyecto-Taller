@@ -1,0 +1,315 @@
+#include "../include/Matrix.h"
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+Matrix::Matrix(int fil, int col) : fil(fil), col(col)
+{
+    initMatrix();
+}
+
+Matrix::Matrix(int fil) : fil(fil), col(1)
+{
+    initMatrix();
+}
+
+
+ 
+Matrix::Matrix(int fil, int col, double v[], int n): fil(fil), col(col)
+{
+    initMatrix();
+ 
+    int k = 0;
+    
+    for (int i = 0; i < fil; i++)
+        for (int j = 0; j < col; j++){
+            if (k < n)
+                matrix[i][j] = v[k++];
+            else
+                matrix[i][j] = 0;
+        }
+}
+
+Matrix::Matrix(int fil, double v[], int n): fil(fil), col(1)
+{
+    initMatrix();
+ 
+    int k = 0;
+    
+    for (int i = 0; i < fil; i++)
+        for (int j = 0; j < 1; j++){
+            if (k < n)
+                matrix[i][j] = v[k++];
+            else
+                matrix[i][j] = 0;
+        }
+}
+ 
+Matrix::Matrix(const Matrix& m)
+{
+    *this = m;
+}
+ 
+Matrix::~Matrix()
+{
+    for (int i = 0; i < fil; i++)
+        delete[] matrix[i];
+ 
+    delete[] matrix;
+}
+ 
+void Matrix::initMatrix()
+{
+    matrix = new double*[fil];
+    for (int i = 0; i < fil; i++)
+        matrix[i] = new double[col];
+ 
+    for (int i = 0; i < fil; i++)
+        for (int j = 0; j < col; j++)
+            matrix[i][j] = 0.0;
+}
+ 
+Matrix& Matrix::operator=(const Matrix& matrix2)
+{
+    for (int i = 0; i < fil; i++)
+        for (int j = 0; j < col; j++)
+            this->matrix[i][j] = matrix2.matrix[i][j];
+ 
+    return *this;
+}
+ 
+Matrix Matrix::operator+(const Matrix& matrix2)
+{
+    Matrix result(fil, col);
+    
+    for (int i = 0; i < fil; i++)
+        for (int j = 0; j < col; j++)
+            result.matrix[i][j] = matrix[i][j] + matrix2.matrix[i][j];
+ 
+    return result;
+}
+ 
+Matrix Matrix::operator-(const Matrix& matrix2)
+{
+    Matrix result(fil, col);
+    
+    for (int i = 0; i < fil; i++)
+        for (int j = 0; j < col; j++)
+            result.matrix[i][j] = matrix[i][j] - matrix2.matrix[i][j];
+ 
+    return result;
+}
+ 
+Matrix Matrix::operator*(const Matrix& matrix2)
+{
+    Matrix result(fil, col);
+ 
+    for (int i = 0; i < this->fil ; i++){
+        for (int j = 0; j < matrix2.col; j++){
+            result.matrix[i][j] = 0;
+            for (int k = 0; k < this->col; k++){
+                result.matrix[i][j] = result.matrix[i][j] + this->matrix[i][k] * matrix2.matrix[k][j];
+            }
+        }
+    }
+ 
+    return result;
+}
+
+Matrix Matrix::operator*(const double& d)
+{
+    Matrix result(fil, col);
+ 
+    for (int i = 0; i < this->fil ; i++){
+        for (int j = 0; j < this->col; j++){
+            result.matrix[i][j] = 0;
+            result.matrix[i][j] = this->matrix[i][j] * d;
+        }
+    }
+ 
+    return result;
+}
+
+//en nuestro código las matrices siempre van a ser cuadradas,
+//se hace en Legendre
+Matrix Matrix::operator/(const Matrix& matrix2)
+{
+    Matrix result(fil, col);
+
+    Matrix matrix3 = Matrix::INV(const_cast<Matrix &>(matrix2));
+ 
+    for (int i = 0; i < this->fil ; i++){
+        for (int j = 0; j < matrix2.col; j++){
+            result.matrix[i][j] = 0;
+            for (int k = 0; k < this->col; k++){
+                result.matrix[i][j] = result.matrix[i][j] + this->matrix[i][k] * matrix2.matrix[k][j];
+            }
+        }
+    }
+
+    return result;
+}
+
+Matrix Matrix::operator/(const double& d)
+{
+    Matrix result(fil, col);
+ 
+    for (int i = 0; i < this->fil ; i++){
+        for (int j = 0; j < this->col; j++){
+            result.matrix[i][j] = 0;
+            result.matrix[i][j] = this->matrix[i][j] / d;
+        }
+    }
+ 
+    return result;
+}
+ 
+ 
+double& Matrix::operator()(const int i, const int j) const
+{
+    return matrix[i-1][j-1];
+}
+
+double& Matrix::operator()(const int i) const
+{
+    return matrix[i-1][0];
+}
+ 
+void Matrix::print()
+{
+    for (int i = 0; i < fil; i++){
+        for (int j = 0; j < col; j++){
+            std::cout << std::fixed << std::setprecision(14) << matrix[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+double Matrix::dot(Matrix m) {
+    double result = 0.0;
+
+    for (int i = 0; i < this->fil ; i++){
+        for (int j = 0; j < this->col; j++){
+            result += (matrix[i][j] * m.matrix[i][j]);
+        }
+    }
+    return result;
+}
+
+double Matrix::norm() {
+
+    double result = 0.0;
+
+    for (int i = 0; i < this->fil ; i++){
+        for (int j = 0; j < this->col; j++){
+            result += (matrix[i][j] * matrix[i][j]);
+        }
+    }
+    return result;
+}
+
+Matrix& Matrix::transpose(){
+    Matrix result(this->col, this->fil);
+ 
+    
+    for (int i = 0; i < this->getFil(); i++)
+        for (int j = 0; j < this->getCol(); j++){
+            result.matrix[i][j] = this->matrix[j][i];
+            
+        }
+    return result;
+}
+
+Matrix static eye(double size)
+{
+    int s = nearbyint(size);
+    Matrix m = Matrix(s, s);
+
+    for (int i = 0; i < s; i++) {
+        for (int j = 0; j < s; j++) {
+        if (i == j)
+            m.getMatrix()[i][j] = 1.0;
+        else
+            m.getMatrix()[i][j] = 0.0;
+        }
+    }
+    return m;
+}
+
+int Matrix::getFil(){
+    return this->fil;
+}
+
+int Matrix::getCol(){
+    return this->col;
+}
+
+double** Matrix::getMatrix(){
+    return this->matrix;
+}
+
+void getCfactor(Matrix& M, Matrix& t, int p, int q, int n) {
+   int i = 0, j = 0;
+   for (int r= 0; r< n; r++) {
+      for (int c = 0; c< n; c++) //Copy only those elements which are not in given row r and column c: 
+      {
+         if (r != p && c != q) {
+             j++;
+              t(i+1, j+1) = M(r+1,c+1); //If row is filled increase r index and reset c index
+            if (j == n - 1) {
+               j = 0; i++;
+            }
+         }
+      }
+   }
+}
+
+double Matrix::DET(Matrix& M, int n){ //to find determinant
+   double D = 0;
+   if (n == 1)
+      return M(1,1);
+   Matrix t(n, n); //store cofactors
+   int s = 1; //store sign multiplier
+   //To Iterate each element of first row
+   for (int f = 0; f < n; f++) {
+      //For Getting Cofactor of M[0][f] do 
+      getCfactor(M, t, 0, f, n); 
+      D += s * M(1, f+1) * DET(t, n - 1);
+      s = -s;
+   }
+   return D;
+}
+
+Matrix Matrix::ADJ(Matrix& M){
+//to find adjoint matrix
+    int n = M.getFil();
+    Matrix adj = Matrix(n, n);
+   if (n == 1) {
+      adj(1, 1) = 1;
+      return adj;
+   }
+   int s = 1;
+   Matrix t = Matrix(n, n);
+   for (int i=0; i<n; i++) {
+      for (int j=0; j<n; j++) {
+         //To get cofactor of M[i][j]
+         getCfactor(M, t, i, j, n);
+         s = ((i+j)%2==0)? 1: -1; //sign of adj[j][i] positive if sum of row and column indexes is even.
+         adj(j+1, i+1) = (s)*(DET(t, n-1)); //Interchange rows and columns to get the transpose of the cofactor matrix
+      }
+   }
+   return adj;
+}
+
+Matrix Matrix::INV(Matrix& M) {
+    Matrix inv(M.getFil(), M.getCol());
+   double det = DET(M, M.getFil());
+   if (det == 0) {
+      std::cout << "can't find its inverse";
+      return Matrix(M.fil, M.col);
+   }
+    Matrix adj = ADJ(M);
+   for (int i=0; i<M.getFil(); i++) for (int j=0; j<M.getFil(); j++) inv(i+1, j+1) = adj(i+1, j+1)/det;
+   return inv;
+}
