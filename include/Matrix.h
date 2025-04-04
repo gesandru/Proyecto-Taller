@@ -50,13 +50,13 @@ class Matrix
         int getCol();
         double **getMatrix();
 
-        Matrix INV(Matrix& M);
+        Matrix inv(Matrix& M);
  
 
 
-    double DET(Matrix &M, int n);
+    double det(Matrix &M, int n);
     void getCfactor(Matrix& M, Matrix& t, int p, int q, int n);
-    Matrix ADJ(Matrix &M);
+    Matrix adj(Matrix &M);
 
 
 };

@@ -212,10 +212,15 @@ double& Matrix::operator()(const int i, const int j) const
     return matrix[i-1][j-1];
 }
 
-double& Matrix::operator()(const int i) const
+double& Matrix::operator()(const int n) const
 {
-	//hacer la comprobacion
-    return matrix[i-1][0];
+		if(n<=0 || n>fil*col){
+		if(n<=0 || n>fil*col){
+		cout<<"Error de matriz operador ()\n";
+		exit(EXIT_FAILURE);
+	}
+	
+    return matrix[(n-1)/this.col][(n-1)%this.col];
 }
 
 ostream& operator << (ostream &o, Matrix&m){
@@ -252,13 +257,17 @@ double Matrix::dot(Matrix m) {
 
 double Matrix::norm() {
 
+	if(this->col>1){
+		cout<<"Esto es la norma del vector, no puede haber más de una columna /\n";
+		exit(EXIT_FAILURE);
+	}
+
     double result = 0.0;
 
     for (int i = 0; i < this->fil ; i++){
-        for (int j = 0; j < this->col; j++){
-            result += (matrix[i][j] * matrix[i][j]);
-        }
+        result += (matrix[i][j] * matrix[i][j]);
     }
+	result = sqrt(result)
     return result;
 }
 
@@ -299,6 +308,24 @@ int Matrix::getCol(){
     return this->col;
 }
 
+Matrix Matrix::getFil(Matrix m1, int n){
+	Matrix m2 = new Matrix(m1->col);
+	
+    for (int j = 0; j < col; j++)
+        m2[j][0] = m1[n][j];
+	
+	return m2;
+}
+
+Matrix Matrix::getCol(Matrix m1, int n){
+	Matrix m2 = new Matrix(m1->fil);
+	
+    for (int i = 0; i < fil; i++)
+        m2[i][0] = m1[i][n];
+	
+	return m2;
+}
+
 double** Matrix::getMatrix(){
     return this->matrix;
 }
@@ -319,7 +346,8 @@ void getCfactor(Matrix& M, Matrix& t, int p, int q, int n) {
    }
 }
 
-double Matrix::DET(Matrix& M, int n){ //to find determinant
+
+double Matrix::det(Matrix& M, int n){ //to find determinant
    double D = 0;
    if (n == 1)
       return M(1,1);
@@ -329,13 +357,13 @@ double Matrix::DET(Matrix& M, int n){ //to find determinant
    for (int f = 0; f < n; f++) {
       //For Getting Cofactor of M[0][f] do 
       getCfactor(M, t, 0, f, n); 
-      D += s * M(1, f+1) * DET(t, n - 1);
+      D += s * M(1, f+1) * det(t, n - 1);
       s = -s;
    }
    return D;
 }
 
-Matrix Matrix::ADJ(Matrix& M){
+Matrix Matrix::adj(Matrix& M){
 //to find adjoint matrix
     int n = M.getFil();
     Matrix adj = Matrix(n, n);
@@ -350,20 +378,20 @@ Matrix Matrix::ADJ(Matrix& M){
          //To get cofactor of M[i][j]
          getCfactor(M, t, i, j, n);
          s = ((i+j)%2==0)? 1: -1; //sign of adj[j][i] positive if sum of row and column indexes is even.
-         adj(j+1, i+1) = (s)*(DET(t, n-1)); //Interchange rows and columns to get the transpose of the cofactor matrix
+         adj(j+1, i+1) = (s)*(det(t, n-1)); //Interchange rows and columns to get the transpose of the cofactor matrix
       }
    }
    return adj;
 }
 
-Matrix Matrix::INV(Matrix& M) {
+Matrix Matrix::inv(Matrix& M) {
     Matrix inv(M.getFil(), M.getCol());
-   double det = DET(M, M.getFil());
+   double det = det(M, M.getFil());
    if (det == 0) {
       std::cout << "can't find its inverse";
       return Matrix(M.fil, M.col);
    }
-    Matrix adj = ADJ(M);
+    Matrix adj = adj(M);
    for (int i=0; i<M.getFil(); i++) for (int j=0; j<M.getFil(); j++) inv(i+1, j+1) = adj(i+1, j+1)/det;
    return inv;
 }
