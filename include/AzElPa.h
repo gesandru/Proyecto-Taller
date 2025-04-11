@@ -7,7 +7,7 @@
 class AzElPa
 {
     public:
-        void static azElPa(Matrix& s, double& Az, double& El, Matrix& dAds, Matrix& dEds);
+        tuple<double, double, Matrix, Matrix> static azElPa(Matrix& s);
 };
 
 #endif

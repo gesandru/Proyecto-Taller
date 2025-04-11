@@ -7,7 +7,7 @@
 class Elements
 {
     public:
-        void static elements (Matrix& y, double& p, double& a, double& e, double& i, double& Omega, double& omega, double& M);
+        static tuple<double, double, double, double, double, double, double,> elements (Matrix& y);
 };
 
 #endif
