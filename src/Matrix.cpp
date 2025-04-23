@@ -10,11 +10,10 @@ Matrix::Matrix(int fil) : fil(fil), col(1)
     initMatrix();
 }
 
-void Matrix::Matrix()
-{
-	this.fil = 0;
-	this.col = 0;
-	this.data = 0;
+Matrix Matrix::zeros(int n){
+	
+	Matrix m = Matrix(n, n);
+	return m;
 }
  
 Matrix::Matrix(int fil, int col, double v[], int n): fil(fil), col(col)
@@ -26,9 +25,9 @@ Matrix::Matrix(int fil, int col, double v[], int n): fil(fil), col(col)
     for (int i = 0; i < fil; i++)
         for (int j = 0; j < col; j++){
             if (k < n)
-                matrix[i][j] = v[k++];
+                data[i][j] = v[k++];
             else
-                matrix[i][j] = 0;
+                data[i][j] = 0;
         }
 }
 
@@ -41,9 +40,9 @@ Matrix::Matrix(int fil, double v[], int n): fil(fil), col(1)
     for (int i = 0; i < fil; i++)
         for (int j = 0; j < 1; j++){
             if (k < n)
-                matrix[i][j] = v[k++];
+                data[i][j] = v[k++];
             else
-                matrix[i][j] = 0;
+                data[i][j] = 0;
         }
 }
  
@@ -55,9 +54,9 @@ Matrix::Matrix(const Matrix& m)
 Matrix::~Matrix()
 {
     for (int i = 0; i < fil; i++)
-        delete[] matrix[i];
+        delete[] data[i];
  
-    delete[] matrix;
+    delete[] data;
 }
  
 void Matrix::initMatrix()
@@ -66,26 +65,26 @@ void Matrix::initMatrix()
 		cout<<"Error de matriz\n";
 		exit(EXIT_FAILURE);
 	}
-    matrix = (double**)malloc(fil*sizeof(double*)); //new double*[fil];
+    data = (double**)malloc(fil*sizeof(double**)); //new double*[fil];
 	
-	if(matrix == NULL){
+	if(data == NULL){
 		cout<<"Error al crear la matriz initMatrix\n";
 		exit(EXIT_FAILURE);
 	}
 	
     for (int i = 0; i < fil; i++)
-        matrix[i] = (double**)malloc(col*sizeof(double*));//new double[col];
+        data[i] = (double*)malloc(col*sizeof(double*));//new double[col];
  
     for (int i = 0; i < fil; i++)
         for (int j = 0; j < col; j++)
-            matrix[i][j] = 0.0;
+            data[i][j] = 0.0;
 }
  
 Matrix& Matrix::operator=(const Matrix& matrix2)
 {
     for (int i = 0; i < fil; i++)
         for (int j = 0; j < col; j++)
-            this->matrix[i][j] = matrix2.matrix[i][j];
+            this->data[i][j] = matrix2.data[i][j];
  
     return *this;
 }
@@ -102,7 +101,7 @@ Matrix& Matrix::operator+(const Matrix& matrix2)
     
     for (int i = 0; i < fil; i++)
         for (int j = 0; j < col; j++)
-            result.matrix[i][j] = matrix[i][j] + matrix2.matrix[i][j];
+            result->data[i][j] = data[i][j] + matrix2.data[i][j];
  
     return *result;
 }
@@ -118,25 +117,25 @@ Matrix Matrix::operator-(const Matrix& matrix2)
     
     for (int i = 0; i < fil; i++)
         for (int j = 0; j < col; j++)
-            result.matrix[i][j] = matrix[i][j] - matrix2.matrix[i][j];
+            result->data[i][j] = data[i][j] - matrix2.data[i][j];
  
     return *result;
 }
  
-Matrix Matrix::operator*(const Matrix& matrix2)
+Matrix Matrix::operator*(Matrix* matrix2)
 {
-    	if(this->fil!=matrix2.fil || this->col!=matrix2.col){
-		cout<<"Error de matriz en operador *\n";
+    	if(this->fil!=matrix2->fil || this->col!=matrix2->col){
+		cout<<"Error de matriz en operador * con otra matriz\n";
 		exit(EXIT_FAILURE);
 	}
 	
     Matrix *result = new Matrix(this->fil, this->col);
  
     for (int i = 0; i < this->fil ; i++){
-        for (int j = 0; j < matrix2.col; j++){
-            result.matrix[i][j] = 0;
+        for (int j = 0; j < matrix2->col; j++){
+            result->data[i][j] = 0;
             for (int k = 0; k < this->col; k++){
-                result.matrix[i][j] = result.matrix[i][j] + this->matrix[i][k] * matrix2.matrix[k][j];
+                result->data[i][j] = result->data[i][j] + this->data[i][k] * matrix2->data[k][j];
             }
         }
     }
@@ -146,17 +145,12 @@ Matrix Matrix::operator*(const Matrix& matrix2)
 
 Matrix Matrix::operator*(const double& d)
 {
-	if(this->fil!=matrix2.fil || this->col!=matrix2.col){
-		cout<<"Error de matriz en operador * con double\n";
-		exit(EXIT_FAILURE);
-	}
-	
     Matrix *result = new Matrix(this->fil, this->col);
  
     for (int i = 0; i < this->fil ; i++){
         for (int j = 0; j < this->col; j++){
-            result.matrix[i][j] = 0;
-            result.matrix[i][j] = this->matrix[i][j] * d;
+            result->data[i][j] = 0;
+            result->data[i][j] = this->data[i][j] * d;
         }
     }
  
@@ -165,22 +159,22 @@ Matrix Matrix::operator*(const double& d)
 
 //en nuestro código las matrices siempre van a ser cuadradas,
 //se hace en Legendre
-Matrix Matrix::operator/(const Matrix& matrix2)
+Matrix Matrix::operator/(Matrix* matrix2)
 {
-	if(this->fil!=matrix2.fil || this->col!=matrix2.col){
+	if(this->fil!=matrix2->fil || this->col!=matrix2->col){
 		cout<<"Error de matriz en operador /\n";
 		exit(EXIT_FAILURE);
 	}
 	
     Matrix *result = new Matrix(this->fil, this->col);
 
-    Matrix matrix3 = Matrix::INV(const_cast<Matrix &>(matrix2));
+    Matrix matrix3 = Matrix::inv(matrix2);
  
     for (int i = 0; i < this->fil ; i++){
-        for (int j = 0; j < matrix2.col; j++){
-            result.matrix[i][j] = 0;
+        for (int j = 0; j < matrix2->col; j++){
+            result->data[i][j] = 0;
             for (int k = 0; k < this->col; k++){
-                result.matrix[i][j] = result.matrix[i][j] + this->matrix[i][k] * matrix2.matrix[k][j];
+                result->data[i][j] = result->data[i][j] + this->data[i][k] * matrix2->data[k][j];
             }
         }
     }
@@ -190,8 +184,8 @@ Matrix Matrix::operator/(const Matrix& matrix2)
 
 Matrix Matrix::operator/(const double& d)
 {
-	if(this->fil!=matrix2.fil || this->col!=matrix2.col){
-		cout<<"Error de matriz en operador /\n";
+	if(d==0.0){
+		cout<<"Error de matriz en operador / por dividir por 0\n";
 		exit(EXIT_FAILURE);
 	}
 	
@@ -199,8 +193,8 @@ Matrix Matrix::operator/(const double& d)
  
     for (int i = 0; i < this->fil ; i++){
         for (int j = 0; j < this->col; j++){
-            result.matrix[i][j] = 0;
-            result.matrix[i][j] = this->matrix[i][j] / d;
+            result->data[i][j] = 0;
+            result->data[i][j] = this->data[i][j] / d;
         }
     }
  
@@ -214,7 +208,7 @@ double& Matrix::operator()(const int i, const int j) const
 		cout<<"Error de matriz operador ()\n";
 		exit(EXIT_FAILURE);
 	}
-    return matrix[i-1][j-1];
+    return data[i-1][j-1];
 }
 
 double& Matrix::operator()(const int n) const
@@ -225,8 +219,10 @@ double& Matrix::operator()(const int n) const
 		exit(EXIT_FAILURE);
 	}
 	
-    return matrix[(n-1)/this.col][(n-1)%this.col];
+    return data[(n-1)/this->col][(n-1)%this->col];
 }
+}
+
 
 ostream& operator << (ostream &o, Matrix&m){
 	for(int i = 0; i<m.fil; i++){
@@ -237,12 +233,13 @@ ostream& operator << (ostream &o, Matrix&m){
 	}
 	return o;
 }
+
  
-void Matrix::print()
+void Matrix::printer()
 {
     for (int i = 0; i < fil; i++){
         for (int j = 0; j < col; j++){
-            std::cout << std::fixed << std::setprecision(14) << matrix[i][j] << " ";
+            std::cout << std::fixed << std::setprecision(14) << data[i][j] << " ";
         }
         std::cout << std::endl;
     }
@@ -254,7 +251,7 @@ double Matrix::dot(Matrix m) {
 
     for (int i = 0; i < this->fil ; i++){
         for (int j = 0; j < this->col; j++){
-            result += (matrix[i][j] * m.matrix[i][j]);
+            result += (data[i][j] * m.data[i][j]);
         }
     }
     return result;
@@ -270,7 +267,9 @@ double Matrix::norm() {
     double result = 0.0;
 
     for (int i = 0; i < this->fil ; i++){
-        result += (matrix[i][j] * matrix[i][j]);
+		for(int j = 0; j < this->col ; j++){
+			result += (data[i][j] * data[i][j]);
+		}
     }
 	result = sqrt(result)
     return result;
@@ -283,7 +282,7 @@ Matrix& Matrix::transpose(){
     
     for (int i = 0; i < this->getFil(); i++)
         for (int j = 0; j < this->getCol(); j++){
-            result.matrix[i][j] = this->matrix[j][i];
+            result.data[i][j] = this->data[j][i];
             
         }
     return *result;
@@ -332,7 +331,7 @@ Matrix Matrix::getCol(Matrix m1, int n){
 }
 
 double** Matrix::getMatrix(){
-    return this->matrix;
+    return this->data;
 }
 
 void getCfactor(Matrix& M, Matrix& t, int p, int q, int n) {
@@ -389,7 +388,7 @@ Matrix Matrix::adj(Matrix& M){
    return adj;
 }
 
-Matrix Matrix::inv(Matrix& M) {
+Matrix Matrix::inv(Matrix* M) {
     Matrix inv(M.getFil(), M.getCol());
    double det = det(M, M.getFil());
    if (det == 0) {
