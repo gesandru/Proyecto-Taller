@@ -4,6 +4,7 @@
 #include "../include/Matrix.h"
 #include "../include/const.h"
 #include "../include/Mjday.h"
+#include <cmath>
 
 //lo mismo haremos con GEOS3 y con GGMO3S
 
@@ -16,7 +17,7 @@ class Global{
     public:
     static int n_eqn;
     static Param *AuxParam;
-    static Matrix *eopdata;
+    extern Matrix *eopdata;
     static Matrix *obs;
     static Matrix *GGMO3Sdata;
     static Matrix *Cnm;

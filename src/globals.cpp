@@ -8,32 +8,32 @@
 
 using namespace std;
 
-    Matrix *Global::eopdata;
+    Matrix eopdata;
 
     void Global::eop19620101(int c){
-        Global::eopdata = new Matrix(13, c);
+        eopdata = new Matrix(13, c);
 
-        FILE* fid = fopen("../data/eop19620101.txt","r");
+        FILE *fid = fopen("../data/eop19620101.txt","r");
         if(fid==nullptr){
-            printf("Error al abrir el archivo");
+            printf("Error al abrir el archivo eop19620101");
             exit(EXIT_FAILURE);
         }
 
 for(int i=1; i<=c; i++){
 fscanf(fid,"%lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf",
-&((*Global::eopdata)(1,i)),
-&((*Global::eopdata)(2,i)),
-&((*Global::eopdata)(3,i)),
-&((*Global::eopdata)(4,i)),
-&((*Global::eopdata)(5,i)),
-&((*Global::eopdata)(6,i)),
-&((*Global::eopdata)(7,i)),
-&((*Global::eopdata)(8,i)),
-&((*Global::eopdata)(9,i)),
-&((*Global::eopdata)(10,i)),
-&((*Global::eopdata)(11,i)),
-&((*Global::eopdata)(12,i)),
-&((*Global::eopdata)(13,i)));
+&((eopdata)(1,i)),
+&((eopdata)(2,i)),
+&((eopdata)(3,i)),
+&((eopdata)(4,i)),
+&((eopdata)(5,i)),
+&((eopdata)(6,i)),
+&((eopdata)(7,i)),
+&((eopdata)(8,i)),
+&((eopdata)(9,i)),
+&((eopdata)(10,i)),
+&((eopdata)(11,i)),
+&((eopdata)(12,i)),
+&((eopdata)(13,i)));
 }
 
 fclose(fid);

@@ -21,6 +21,7 @@ class Matrix
     public:
 	    int fil;
         int col;
+		Matrix();
         Matrix(const int fil, const int col);
         Matrix(int fil);
         Matrix(int fil, int col, double v[], int n);

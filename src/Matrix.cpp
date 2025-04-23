@@ -10,7 +10,12 @@ Matrix::Matrix(int fil) : fil(fil), col(1)
     initMatrix();
 }
 
-
+void Matrix::Matrix()
+{
+	this.fil = 0;
+	this.col = 0;
+	this.data = 0;
+}
  
 Matrix::Matrix(int fil, int col, double v[], int n): fil(fil), col(col)
 {
